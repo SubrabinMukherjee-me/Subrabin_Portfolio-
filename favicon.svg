@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Dark background matching your website's deep void theme -->
+  <rect width="512" height="512" rx="115" fill="#121212"/>
+  
+  <!-- Sleek Golden Ring -->
+  <circle cx="256" cy="256" r="170" fill="none" stroke="#FFD700" stroke-width="32"/>
+  
+  <!-- Cinematic Golden Play Button -->
+  <path d="M216 166 L356 256 L216 346 Z" fill="#FFD700"/>
+</svg>

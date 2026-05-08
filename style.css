@@ -1,0 +1,222 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --bg-deep-void: #121212;
+    --accent-gold: #FFD700;
+    --text-stark-white: #EAEAEA;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background-color: var(--bg-deep-void); color: var(--text-stark-white); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; color: white; }
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; text-align: center; margin-bottom: 50px; }
+p { font-size: 1.1rem; }
+section { padding: 100px 5%; }
+
+/* --- Header & Navigation --- */
+header { position: fixed; width: 100%; top: 0; left: 0; z-index: 100; padding: 20px 5%; background: rgba(18, 18, 18, 0.7); backdrop-filter: blur(10px); }
+nav { display: flex; justify-content: space-between; align-items: center; }
+nav .logo { font-family: var(--font-heading); font-size: 1.5rem; color: white; text-decoration: none; font-weight: 700; }
+nav ul { list-style: none; display: flex; }
+nav ul li { margin-left: 30px; }
+nav ul li a { color: var(--text-stark-white); text-decoration: none; font-weight: 700; transition: color 0.3s ease; }
+nav ul li a:hover { color: var(--accent-gold); }
+
+/* --- Animation Keyframes for Initial Load --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Hero Section --- */
+#hero { position: relative; height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; padding: 0 5%; overflow: hidden; }
+.hero-video { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -2; }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: -1; }
+
+.hero-content { width: 100%; max-width: 1200px; padding-top: 60px; }
+.hero-content h1 { font-size: 3.5rem; font-family: var(--font-heading); color: white; margin-bottom: 10px; opacity: 0; animation: fadeInUp 1s ease-out 0.5s forwards; }
+.hero-content p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0; animation: fadeInUp 1s ease-out 0.8s forwards; height: 1.5em; }
+.hero-content .typing-text { color: var(--accent-gold); font-weight: 600; }
+
+.cta-button { display: inline-block; background-color: var(--accent-gold); color: #121212; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-family: var(--font-heading); font-weight: 700; transition: background-color 0.3s ease; opacity: 0; animation: fadeInUp 1s ease-out 1.4s forwards; margin-top: 20px;}
+.cta-button:hover { background-color: #FFBF00; }
+
+/* --- Continuous Marquee CSS --- */
+.hero-video-showcase { width: 100%; max-width: 960px; margin: 0 auto 30px auto; overflow: hidden; opacity: 0; animation: fadeInUp 1s ease-out 1.1s forwards; }
+.video-track { display: flex; width: max-content; animation: scrollMarquee 12s linear infinite; }
+.showcase-video { width: 250px; height: 160px; margin-right: 20px; border-radius: 8px; object-fit: cover; border: 2px solid rgba(255, 255, 255, 0.2); }
+
+@keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+/* --- About Section --- */
+.about-content { display: flex; align-items: center; gap: 60px; max-width: 1100px; margin: 0 auto; }
+.about-content img { width: 300px; height: 300px; object-fit: cover; border-radius: 50%; border: 5px solid var(--accent-gold); flex-shrink: 0; }
+.about-text p { margin-bottom: 25px; line-height: 1.8; }
+.about-text h3 { margin-top: 0; margin-bottom: 15px; }
+.about-text ul { list-style: none; }
+.about-text ul li { margin-bottom: 8px; }
+.about-text ul li::before { content: '✓'; color: var(--accent-gold); margin-right: 10px; font-weight: 800; }
+
+/* --- Work Section (Organized Grids) --- */
+#work{ background-color:#1a1a1a }
+
+.work-category-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.work-subcategory-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--text-stark-white);
+    margin-top: 10px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Base Portfolio Grid settings */
+.portfolio-grid { 
+    display: grid; 
+    gap: 25px; 
+    margin: 0 auto 60px auto; 
+    justify-content: center; 
+}
+
+/* Grids Setup */
+.snaapify-grid, .other-shorts-grid, .motion-grid { 
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    max-width: 700px; 
+}
+.other-grid { 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    max-width: 1200px; 
+}
+
+/* Image Aspect Ratios */
+.snaapify-grid .portfolio-item img, 
+.other-shorts-grid .portfolio-item img, 
+.motion-grid .portfolio-item img { 
+    aspect-ratio: 9/16; 
+    object-fit: cover; 
+}
+
+.other-grid .portfolio-item img { 
+    aspect-ratio: 16/9; 
+    object-fit: cover; 
+}
+
+/* Portfolio Overlay and Interactions */
+.portfolio-item { position:relative; overflow:hidden; border-radius:8px; cursor:pointer; }
+.portfolio-item img { width:100%; display:block; transition:transform .4s ease; }
+.portfolio-item:hover img { transform:scale(1.1); }
+
+.portfolio-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(to top,rgba(18,18,18,.9),transparent); display:flex; flex-direction:column; justify-content:flex-end; padding:25px; opacity:0; transition:opacity .4s ease; }
+.portfolio-item:hover .portfolio-overlay { opacity:1; }
+.portfolio-overlay h3 { font-size:1.5rem; }
+.portfolio-overlay p { font-size:1rem; margin-bottom:15px; }
+
+.view-project-btn { align-self:flex-start; padding:8px 15px; background:var(--accent-gold); color:#121212; text-decoration:none; border-radius:4px; font-weight:700; }
+
+/* --- Services Section --- */
+.services-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:40px; max-width:1100px; margin:0 auto; text-align:center }
+.service-item i{ font-size:3rem; color:var(--accent-gold); margin-bottom:20px }
+.service-item h3{ margin-bottom:10px; font-size:1.5rem }
+
+/* --- Contact Section --- */
+#contact{ text-align:center }
+.contact-form{ max-width:700px; margin:30px auto 0 auto; display:flex; flex-direction:column; gap:20px }
+.contact-form input, .contact-form textarea{ width:100%; padding:15px; border:2px solid #333; border-radius:5px; background-color:#1f1f1f; color:var(--text-stark-white); font-family:var(--font-body); font-size:1rem; transition:border-color .3s ease }
+.contact-form input:focus, .contact-form textarea:focus{ outline:none; border-color:var(--accent-gold) }
+.contact-form button{ border:none; cursor:pointer }
+.form-status-message { display: none; margin-top: 15px; font-weight: 700; color: var(--accent-gold); }
+
+/* --- Footer --- */
+footer{ padding:40px 5%; text-align:center; background-color:#1a1a1a }
+.social-links { margin-top: 15px; display: none; }
+.social-links a{ color:var(--text-stark-white); font-size:1.5rem; margin:0 15px; transition:color .3s ease }
+.social-links a:hover{ color:var(--accent-gold) }
+
+/* --- Scroll & Typing Animation --- */
+.animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+.typing-text { position: relative; color: var(--accent-gold); font-weight: 600; }
+.typing-text::after { content: ''; position: absolute; width: 2px; height: 100%; background-color: var(--accent-gold); animation: blink 0.7s infinite; right: -5px; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ========================================= */
+/* --- RESPONSIVE DESIGN MEDIA QUERIES --- */
+/* ========================================= */
+
+/* TABLETS (Max-width: 992px) */
+@media (max-width: 992px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.2rem; }
+    
+    .about-content { gap: 40px; }
+    .about-content img { width: 250px; height: 250px; }
+    
+    .other-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+}
+
+/* MOBILE PHONES (Max-width: 768px) */
+@media (max-width: 768px) {
+    /* Adjust general sizing */
+    section { padding: 60px 5%; }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 30px; }
+    p { font-size: 1rem; }
+    
+    /* Hide navigation links, keep logo centered */
+    nav { justify-content: center; }
+    nav ul { display: none; }
+    
+    /* Hero Section Fixes */
+    .hero-content { padding-top: 80px; }
+    .hero-content p { font-size: 1rem; }
+    .showcase-video { width: 180px; height: 120px; margin-right: 15px; }
+    
+    /* About Section - Stack image on top of text */
+    .about-content { flex-direction: column; text-align: center; gap: 30px; }
+    .about-content img { width: 200px; height: 200px; }
+    .about-text h3 { text-align: center; }
+    .about-text ul li { display: inline-block; margin: 0 10px 10px 10px; } /* Horizontal list on mobile */
+    
+    /* Work Section Typography */
+    .work-category-title { font-size: 1.6rem; margin-top: 30px; }
+    .work-subcategory-title { font-size: 1.3rem; }
+    
+    /* Force grids to handle mobile sizing better */
+    .portfolio-grid { gap: 15px; margin-bottom: 40px; }
+    .snaapify-grid, .other-shorts-grid, .motion-grid { 
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+    }
+    .other-grid { 
+        grid-template-columns: 1fr; /* Force 1 long video per row on phones */
+    }
+    
+    /* Overlay adjustments for touch screens */
+    .portfolio-overlay { padding: 15px; }
+    .portfolio-overlay h3 { font-size: 1.2rem; }
+    .portfolio-overlay p { margin-bottom: 10px; }
+    .view-project-btn { padding: 6px 12px; font-size: 0.9rem; }
+    
+    /* Services Adjustments */
+    .services-grid { gap: 30px; }
+}
+
+/* SMALL MOBILE (Max-width: 480px) */
+@media (max-width: 480px) {
+    h1 { font-size: 1.8rem; }
+    .cta-button { padding: 12px 24px; width: 100%; text-align: center; }
+    .showcase-video { width: 150px; height: 100px; }
+}
